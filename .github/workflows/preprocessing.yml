@@ -27,7 +27,7 @@ jobs:
       - name: Run Preprocessing Script
         run: |
           cd preprocessing
-          python automate_JasmineKinasih.py
+          python automate_Jasminekinasih.py
 
       - name: Commit Processed Data
         run: |
