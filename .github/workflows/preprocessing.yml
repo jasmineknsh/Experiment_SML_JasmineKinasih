@@ -1,0 +1,38 @@
+name: Data Preprocessing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas scikit-learn joblib
+
+      - name: Run Preprocessing Script
+        run: |
+          cd preprocessing
+          python automate_JasmineKinasih.py
+
+      - name: Commit Processed Data
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add preprocessing/namadataset_preprocessing/*.csv || true
+          git commit -m "Auto-commit processed data [skip ci]" || echo "No changes to commit"
+          git push
