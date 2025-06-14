@@ -96,5 +96,5 @@ if __name__ == "__main__":
     automate_preprocessing(
         input_file='../Graduate_Admission2_raw.csv',
         scaler_path='./model/scaler.pkl',
-        output_dir='preprocessing/Graduate_Admission2_preprocessing'
+        output_dir='Graduate_Admission2_preprocessing'
     )
